@@ -5,29 +5,33 @@
 #ifndef UNTITLED11_TREE_H
 #define UNTITLED11_TREE_H
 
-struct elem {
+struct Person {
     int id;
-    char fio[20];
-    int mark;
+    std::string fio;
+    double mark;
 };
 
-struct node {
-    elem data;
-    node * left;
-    node * right;
+struct Node {
+    Person data;
+    Node * left;
+    Node * right;
 };
 
 class tree {
 private:
-    node * root = nullptr;
-    bool addElement(elem value, node **pNode);
-    void traverseTree(node *pNode);
-    void traverseTree(node *pNode, int limit);
+    Node * root = nullptr;
+    bool addElement(Person value, Node **pNode);
+    void traverseTree(Node *pNode);
+    void traverseTree(Node *pNode, int limit);
+    Person * find(Node *pNode, std::string fio);
+    void removeElement(std::string fio, Node **pNode);
+    void removeEl(Node **pNode, Node **q);
 public:
-    bool add(elem e);
+    bool add(Person e);
     void traverse();
     void printUnder(int limit);
-
+    Person * find(std::string fio);
+    void removeElement(std::string fio);
 };
 
 
